@@ -450,25 +450,4 @@ body.processing .container {
 .preview-container::after,
 .preview-container::before {
     transition: all 0.3s ease;
-}
-
-.app-header {
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 30px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.app-logo {
-    max-width: 400px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    transition: transform 0.3s ease;
-}
-
-.app-logo:hover {
-    transform: scale(1.02);
 } 
