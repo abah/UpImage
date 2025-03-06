@@ -37,7 +37,7 @@ h1 {
 
 .subtitle {
     font-size: 1.2em;
-    color: #7f8c8d;
+    color: #34495e;
     margin-top: 10px;
 }
 
@@ -144,7 +144,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .help-text {
     font-size: 0.85em;
-    color: #7f8c8d;
+    color: #2c3e50;
     margin-top: 5px;
     padding: 8px 12px;
     background: linear-gradient(135deg, rgba(0, 147, 233, 0.1) 0%, rgba(128, 208, 199, 0.1) 100%);
@@ -450,4 +450,74 @@ body.processing .container {
 .preview-container::after,
 .preview-container::before {
     transition: all 0.3s ease;
+}
+
+/* Accessibility improvements */
+:focus {
+    outline: 3px solid #0093E9;
+    outline-offset: 2px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Add skip link for keyboard navigation */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #0093E9;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #2c3e50;
+    font-size: 0.9em;
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: none;
+        color: black;
+    }
+
+    .container {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .controls, .button-group, .upload-section {
+        display: none;
+    }
+
+    .image-container {
+        grid-template-columns: 1fr;
+    }
+
+    .image-box {
+        page-break-inside: avoid;
+        border: none;
+        box-shadow: none;
+    }
 } 
