@@ -1,6 +1,13 @@
 # UpImage - AI-Powered Image Upscaler
 
-![UpImage Logo](assets/logo.png)
+<div align="center">
+  <img src="assets/logo.png" alt="UpImage Logo" width="400"/>
+  
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![Made with TensorFlow](https://img.shields.io/badge/Made%20with-TensorFlow-orange.svg)](https://www.tensorflow.org)
+  [![GitHub stars](https://img.shields.io/github/stars/abah/UpImage.svg)](https://github.com/abah/UpImage/stargazers)
+  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
+</div>
 
 UpImage is a cutting-edge web application that leverages the power of artificial intelligence to enhance and upscale images while preserving quality and detail. Using state-of-the-art deep learning models (ESRGAN and SRCNN), it provides professional-grade image upscaling suitable for both personal and commercial use.
 
