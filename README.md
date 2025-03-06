@@ -1,7 +1,7 @@
 # UpImage - AI-Powered Image Upscaler
 
 <div align="center">
-  <img src="assets/logo.png" alt="UpImage Logo" width="400"/>
+  <img src="assets/logo.png" alt="UpImage Logo" width="600" style="max-width: 100%; height: auto; margin: 20px 0;"/>
   
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![Made with TensorFlow](https://img.shields.io/badge/Made%20with-TensorFlow-orange.svg)](https://www.tensorflow.org)
