@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="60" viewBox="0 0 200 60" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#6B4FBB;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Background Rectangle -->
+    <rect x="10" y="10" width="180" height="40" rx="8" fill="url(#gradient)" />
+    
+    <!-- Up Arrow -->
+    <path d="M40 35 L50 25 L60 35" stroke="white" stroke-width="3" fill="none" />
+    
+    <!-- Text -->
+    <text x="70" y="37" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">UpImage</text>
+    
+    <!-- Image Icon -->
+    <rect x="35" y="22" width="30" height="20" rx="2" stroke="white" stroke-width="2" fill="none" />
+    <circle cx="42" y="28" r="3" fill="white" />
+    <path d="M35 35 L45 30 L50 32 L60 25 L65 42" stroke="white" stroke-width="2" fill="none" />
+</svg> 

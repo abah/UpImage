@@ -1,112 +1,133 @@
-# UpImage - Advanced Image Upscaler
+# UpImage - AI-Powered Image Upscaler
 
-![UpImage Banner](assets/banner.png)
+![UpImage Logo](assets/logo.png)
 
-A modern, browser-based image upscaling application developed by Abah Raditya. UpImage uses advanced algorithms to enhance and upscale your images with professional-grade quality.
+UpImage is a cutting-edge web application that leverages the power of artificial intelligence to enhance and upscale images while preserving quality and detail. Using state-of-the-art deep learning models (ESRGAN and SRCNN), it provides professional-grade image upscaling suitable for both personal and commercial use.
 
-## ✨ Features
+## Why UpImage?
 
-- **Smart Upscaling**
-  - Support for multiple scale factors (2x, 3x, 4x)
-  - DPI-aware scaling (72, 150, 300 DPI)
-  - Maintains image quality during enlargement
+- **Professional Quality**: Achieve print-ready results with our AI-powered upscaling
+- **User-Friendly**: Simple interface with powerful features under the hood
+- **No Installation**: Works directly in your browser - no software to install
+- **Privacy First**: All processing happens locally - your images never leave your device
+- **Free & Open Source**: Completely free to use and open for community contributions
 
-- **Advanced Enhancement**
-  - Intelligent noise reduction
-  - Face detail enhancement
-  - Adaptive sharpening
-  - Quality control for output
+## Features
 
-- **User-Friendly Interface**
-  - Drag & drop support
+- **AI-Powered Upscaling**: Using ESRGAN and SRCNN models for high-quality image enhancement
+- **Multiple Resolution Options**: 
+  - 300 DPI for print-ready output
+  - 150 DPI for web optimization
+  - 72 DPI for screen display
+- **Advanced Enhancement Settings**:
+  - Noise reduction
+  - Face enhancement
+  - Detail sharpening
+  - Quality control
+- **Format Support**: 
+  - PNG (lossless)
+  - JPEG (configurable quality)
+- **Modern UI/UX**:
   - Real-time preview
-  - Progress indication
-  - Modern, responsive design
+  - Side-by-side enhancement settings
+  - Progress indicators
+  - Responsive design
 
-- **Format Support**
-  - Input: JPEG, PNG
-  - Output: Optimized JPEG/PNG
-  - Quality preservation
+## How It Works
 
-## 🚀 Getting Started
+UpImage uses advanced deep learning models to analyze and enhance your images:
 
-1. Open the application in your web browser
-2. Upload an image by:
-   - Clicking "Select Image"
-   - Dragging & dropping your image
-3. Adjust enhancement settings:
-   - Scale Factor
-   - Target DPI
-   - Sharpness
-   - Noise Reduction
-   - Face Enhancement
-   - Output Quality
-4. Click "Upscale Image"
-5. Download your enhanced image
+1. **Image Analysis**: AI models analyze the image structure, textures, and patterns
+2. **Smart Upscaling**: ESRGAN/SRCNN models predict and generate missing details
+3. **Enhancement**: Advanced algorithms for noise reduction and detail preservation
+4. **Quality Control**: Intelligent processing to maintain image quality and prevent artifacts
 
-## 💻 Technical Details
+### Supported Image Types
 
-- Pure JavaScript implementation
-- Canvas-based processing
-- Modern CSS with gradients and animations
-- Responsive design for all devices
-- Memory-optimized for large images
+- **Input Formats**: 
+  - JPEG/JPG (all quality levels)
+  - PNG (with transparency support)
+  - WebP
+  - BMP
+  
+- **Output Options**:
+  - High-quality PNG for lossless results
+  - Optimized JPEG with adjustable compression
+  - Custom DPI settings for various use cases
 
-## 🛠️ Development
+### Use Cases
 
+- **Photography**: Enhance old or low-resolution photos
+- **Graphic Design**: Upscale logos and artwork for print
+- **Web Development**: Prepare images for high-DPI displays
+- **Digital Art**: Increase resolution of digital artwork
+- **Document Processing**: Improve scanned document quality
+
+## Getting Started
+
+### Prerequisites
+
+- Modern web browser (Chrome, Firefox, Safari)
+- Internet connection for AI model loading
+
+### Installation
+
+1. Clone the repository:
 ```bash
-# Clone the repository
-git clone https://github.com/abahraditya/UpImage.git
-
-# Navigate to project directory
+git clone https://github.com/abah/UpImage.git
 cd UpImage
-
-# Open index.html in your browser
 ```
 
-## 🎨 UI/UX Features
+2. Open `index.html` in your web browser
 
-- Smooth animations and transitions
-- Real-time processing feedback
-- Intuitive controls
-- Professional-grade output
+### Usage
 
-## ⚡ Performance
+1. Click "Choose File" or drag & drop an image
+2. Select desired DPI setting (72, 150, or 300)
+3. Adjust enhancement settings:
+   - Move sliders for noise reduction, sharpening, etc.
+   - Toggle face enhancement if needed
+4. Click "Upscale Image"
+5. Download the enhanced result
 
-- Efficient image processing
-- Memory management for large files
-- Progressive enhancement
-- Optimized canvas operations
+## Performance Considerations
 
-## 📋 Requirements
+- Recommended minimum 4GB RAM for optimal performance
+- Processing time varies based on:
+  - Image size and complexity
+  - Selected AI model (ESRGAN vs SRCNN)
+  - Enhancement settings
+  - Device capabilities
 
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- JavaScript enabled
-- Minimum 4GB RAM recommended for large images
+## Technical Details
 
-## 🔒 Privacy
+- **Frontend**: HTML5, CSS3, JavaScript
+- **AI Models**: TensorFlow.js implementation of ESRGAN/SRCNN
+- **Image Processing**: Canvas API with optimized memory management
+- **UI Framework**: Custom CSS with modern design principles
 
-- All processing done locally in the browser
-- No image upload to external servers
-- No data collection
+## Future Roadmap
 
-## 📝 License
+- Additional AI models for specialized use cases
+- Batch processing capabilities
+- Custom model training options
+- API integration for automated workflows
+- Mobile-optimized version
 
-MIT License - see LICENSE file for details
+## Contributing
 
-## 👨‍💻 Developer
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Developed with ❤️ by Abah Raditya
+## License
 
-## 🤝 Contributing
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/abahraditya/UpImage/issues).
+## Acknowledgments
 
-## 📬 Contact
+- ESRGAN and SRCNN model implementations
+- TensorFlow.js team
+- Open source community
 
-Abah Raditya
-- GitHub: [@abahraditya](https://github.com/abahraditya)
+## Contact
 
----
-
-Made with ☕ and code by Abah Raditya 
+- GitHub: [@abah](https://github.com/abah) 
