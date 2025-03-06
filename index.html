@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upscaler</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Image Upscaler</h1>
+            <p class="subtitle">Enhance your images with advanced upscaling</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="file-input-container" id="dropZone">
+                <input type="file" id="imageInput" accept="image/*">
+                <label for="imageInput" class="file-input-label">
+                    Select Image
+                </label>
+                <p class="drop-text">or drag and drop your image here</p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <h3>Resolution Settings</h3>
+                <div class="control-item">
+                    <label for="scaleFactor">Scale Factor:</label>
+                    <select id="scaleFactor">
+                        <option value="2">2x</option>
+                        <option value="3">3x</option>
+                        <option value="4">4x</option>
+                    </select>
+                </div>
+                
+                <div class="control-item">
+                    <label for="targetDPI">Target DPI:</label>
+                    <select id="targetDPI">
+                        <option value="300">300 DPI (Print Quality)</option>
+                        <option value="150">150 DPI (Web Quality)</option>
+                        <option value="72">72 DPI (Screen Quality)</option>
+                    </select>
+                    <div class="help-text">Higher DPI for printing, lower for web/screen use</div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>Enhancement Settings</h3>
+                <div class="control-item">
+                    <label for="sharpness">Sharpness:</label>
+                    <input type="range" id="sharpness" min="0" max="1" step="0.1" value="0.5">
+                </div>
+                
+                <div class="control-item">
+                    <label for="noiseReduction">Noise Reduction:</label>
+                    <input type="range" id="noiseReduction" min="0" max="1" step="0.1" value="0.5">
+                </div>
+                
+                <div class="control-item">
+                    <label for="faceEnhancement">Face Enhancement:</label>
+                    <input type="range" id="faceEnhancement" min="0" max="1" step="0.1" value="0.5">
+                </div>
+                
+                <div class="control-item">
+                    <label for="quality">Output Quality:</label>
+                    <input type="range" id="quality" min="0.1" max="1" step="0.1" value="0.9">
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button id="upscaleButton" onclick="upscaleImage()" class="primary-button">
+                Upscale Image
+            </button>
+            <button id="downloadButton" onclick="downloadImage()" class="secondary-button" disabled>
+                Download Image
+            </button>
+        </div>
+        
+        <div class="image-container">
+            <div class="image-box">
+                <h3>Original Image</h3>
+                <div class="preview-container">
+                    <img id="originalImage" class="preview">
+                </div>
+                <div id="originalInfo" class="image-info"></div>
+            </div>
+            <div class="image-box">
+                <h3>Enhanced Image</h3>
+                <div class="preview-container">
+                    <img id="upscaledImage" class="preview">
+                </div>
+                <div id="upscaledInfo" class="image-info"></div>
+            </div>
+        </div>
+
+        <div id="processingInfo" class="processing-info" style="display: none;">
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <p class="status-text">Processing image...</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
