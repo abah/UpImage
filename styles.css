@@ -22,11 +22,16 @@ body {
 
 .header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 147, 233, 0.08);
+    border: 1px solid rgba(0, 147, 233, 0.1);
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 3em;
     margin: 0;
     padding: 0;
     background: linear-gradient(120deg, #0093E9 0%, #80D0C7 100%);
@@ -36,22 +41,56 @@ h1 {
 }
 
 .subtitle {
-    font-size: 1.2em;
+    font-size: 1.4em;
     color: #34495e;
-    margin-top: 10px;
+    margin: 15px 0 30px;
+    font-weight: 300;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 147, 233, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 147, 233, 0.15);
+}
+
+.feature-icon {
+    font-size: 1.5em;
+}
+
+.feature-text {
+    font-size: 1em;
+    color: #2c3e50;
+    font-weight: 500;
 }
 
 .upload-section {
-    margin: 0 auto 40px;
+    margin: 0 auto 60px;
     position: relative;
     z-index: 2;
-    max-width: 500px;
+    max-width: 600px;
 }
 
 .file-input-container {
-    border: 2px dashed #bdc3c7;
-    border-radius: 12px;
-    padding: 35px 25px;
+    border: 3px dashed #bdc3c7;
+    border-radius: 20px;
+    padding: 50px 40px;
     text-align: center;
     transition: all 0.4s ease;
     background: rgba(255, 255, 255, 0.8);
@@ -60,20 +99,23 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 20px;
 }
 
 .file-input-container:hover {
     border-color: #3498db;
     background: rgba(255, 255, 255, 0.95);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 147, 233, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 147, 233, 0.15);
 }
 
-.file-input-container.drag-over {
-    border-color: #2ecc71;
-    background: rgba(46, 204, 113, 0.1);
-    transform: scale(1.02);
+.upload-icon {
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.file-input-container:hover .upload-icon {
+    transform: translateY(-5px);
 }
 
 .file-input-container input[type="file"] {
@@ -84,22 +126,22 @@ h1 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 24px;
+    padding: 12px 30px;
     background: linear-gradient(120deg, #0093E9 0%, #80D0C7 100%);
     color: white;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: 600;
-    font-size: 0.95em;
+    font-size: 1.1em;
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 0;
     box-shadow: 0 4px 15px rgba(0, 147, 233, 0.2);
-    min-width: 140px;
+    min-width: 160px;
 }
 
 .file-input-label:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 147, 233, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 147, 233, 0.3);
     background: linear-gradient(120deg, #80D0C7 0%, #0093E9 100%);
 }
 
@@ -109,15 +151,17 @@ h1 {
 
 .drop-text {
     margin: 0;
-    color: #7f8c8d;
-    font-size: 0.9em;
-    opacity: 0.8;
+    color: #34495e;
+    font-size: 1.1em;
+    opacity: 0.9;
     transition: all 0.3s ease;
 }
 
-.file-input-container:hover .drop-text {
-    opacity: 1;
-    color: #34495e;
+.supported-formats {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 0.9em;
+    opacity: 0.8;
 }
 
 .controls {

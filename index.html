@@ -10,16 +10,38 @@
     <div class="container">
         <div class="header">
             <h1>Image Upscaler</h1>
-            <p class="subtitle">Enhance your images with advanced upscaling</p>
+            <p class="subtitle">Transform your images with AI-powered enhancement</p>
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">🎯</span>
+                    <span class="feature-text">High Resolution Output</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">⚡</span>
+                    <span class="feature-text">Fast Processing</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">✨</span>
+                    <span class="feature-text">Smart Enhancement</span>
+                </div>
+            </div>
         </div>
 
         <div class="upload-section">
             <div class="file-input-container" id="dropZone">
                 <input type="file" id="imageInput" accept="image/*">
+                <div class="upload-icon">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="#0093E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 8l-5-5-5 5" stroke="#0093E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3v12" stroke="#0093E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <label for="imageInput" class="file-input-label">
                     Select Image
                 </label>
                 <p class="drop-text">or drag and drop your image here</p>
+                <p class="supported-formats">Supports: JPG, PNG, WebP • Max size: 10MB</p>
             </div>
         </div>
 
