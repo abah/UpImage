@@ -160,69 +160,71 @@ function updateImageInfo(width, height, type, elementId, quality = null) {
     info.textContent = text;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const dropZone = document.getElementById('dropZone');
-    const imageInput = document.getElementById('imageInput');
-    const container = document.querySelector('.container');
-    
-    // Add no-image class initially
-    container.classList.add('no-image');
+// Initialize elements
+const imageInput = document.getElementById('imageInput');
+const dropZone = document.getElementById('dropZone');
+const controls = document.querySelector('.controls');
+const buttonGroup = document.querySelector('.button-group');
+const imageContainer = document.querySelector('.image-container');
+const originalImage = document.getElementById('originalImage');
+const upscaledImage = document.getElementById('upscaledImage');
+const originalInfo = document.getElementById('originalInfo');
+const upscaledInfo = document.getElementById('upscaledInfo');
+const processingInfo = document.getElementById('processingInfo');
 
-    // Handle drag and drop events
-    dropZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropZone.classList.add('drag-over');
-    });
+// Show UI elements when image is loaded
+function showUIElements() {
+    controls.classList.add('visible');
+    buttonGroup.classList.add('visible');
+    imageContainer.classList.add('visible');
+}
 
-    dropZone.addEventListener('dragleave', (e) => {
-        e.preventDefault();
-        dropZone.classList.remove('drag-over');
-    });
+// Hide UI elements
+function hideUIElements() {
+    controls.classList.remove('visible');
+    buttonGroup.classList.remove('visible');
+    imageContainer.classList.remove('visible');
+}
 
-    dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropZone.classList.remove('drag-over');
-        const files = e.dataTransfer.files;
-        if (files.length > 0 && files[0].type.startsWith('image/')) {
-            handleImageSelect(files[0]);
-        }
-    });
-
-    // Handle file input change
-    imageInput.addEventListener('change', (e) => {
-        if (e.target.files.length > 0) {
-            handleImageSelect(e.target.files[0]);
-        }
-    });
-
-    function handleImageSelect(file) {
+// Handle file selection
+function handleImageSelect(event) {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith('image/')) {
         const reader = new FileReader();
-        showPreviewLoading('originalImage');
-        
         reader.onload = function(e) {
-            const img = new Image();
-            img.onload = function() {
-                // Show controls and image container
-                container.classList.remove('no-image');
-                
-                // Display original image
-                const originalImage = document.getElementById('originalImage');
-                originalImage.src = e.target.result;
-                
-                // Update image info
-                updateImageInfo(this.width, this.height, file.type, 'originalInfo');
-                
-                // Enable upscale button
-                document.getElementById('upscaleButton').disabled = false;
-                
-                // Hide loading state
-                hidePreviewLoading('originalImage');
+            originalImage.src = e.target.result;
+            originalImage.onload = function() {
+                updateImageInfo(this, originalInfo);
+                showUIElements();
             };
-            img.src = e.target.result;
         };
         reader.readAsDataURL(file);
     }
-});
+}
+
+// Handle drag and drop
+function handleDrop(event) {
+    event.preventDefault();
+    dropZone.classList.remove('drag-over');
+    
+    const file = event.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) {
+        imageInput.files = event.dataTransfer.files;
+        handleImageSelect({ target: { files: [file] } });
+    }
+}
+
+// Handle drag over
+function handleDragOver(event) {
+    event.preventDefault();
+    dropZone.classList.add('drag-over');
+}
+
+// Handle drag leave
+function handleDragLeave(event) {
+    event.preventDefault();
+    dropZone.classList.remove('drag-over');
+}
 
 // Show processing state
 function showProcessing(message) {
@@ -417,4 +419,13 @@ function downloadImage() {
     link.download = `upscaled-image.${extension}`;
     link.href = dataUrl;
     link.click();
-} 
+}
+
+// Initialize event listeners
+imageInput.addEventListener('change', handleImageSelect);
+dropZone.addEventListener('drop', handleDrop);
+dropZone.addEventListener('dragover', handleDragOver);
+dropZone.addEventListener('dragleave', handleDragLeave);
+
+// Initially hide UI elements
+hideUIElements(); 
