@@ -166,8 +166,8 @@ const dropZone = document.getElementById('dropZone');
 const controls = document.querySelector('.controls');
 const buttonGroup = document.querySelector('.button-group');
 const imageContainer = document.querySelector('.image-container');
-const originalImage = document.getElementById('originalImage');
-const upscaledImage = document.getElementById('upscaledImage');
+const originalImageElement = document.getElementById('originalImage');
+const upscaledImageElement = document.getElementById('upscaledImage');
 const originalInfo = document.getElementById('originalInfo');
 const upscaledInfo = document.getElementById('upscaledInfo');
 const processingInfo = document.getElementById('processingInfo');
@@ -192,10 +192,18 @@ function handleImageSelect(event) {
     if (file && file.type.startsWith('image/')) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            originalImage.src = e.target.result;
-            originalImage.onload = function() {
-                updateImageInfo(this, originalInfo);
-                showUIElements();
+            originalImageElement.src = e.target.result;
+            originalImageElement.onload = function() {
+                // Show all UI elements
+                controls.classList.add('visible');
+                buttonGroup.classList.add('visible');
+                imageContainer.classList.add('visible');
+                
+                // Update image info
+                const width = this.naturalWidth;
+                const height = this.naturalHeight;
+                const type = file.type;
+                updateImageInfo(width, height, type, 'originalInfo');
             };
         };
         reader.readAsDataURL(file);
@@ -274,9 +282,7 @@ function hidePreviewLoading(previewId) {
 
 // Upscaling function
 async function upscaleImage() {
-    const originalImage = document.getElementById('originalImage');
-    
-    if (!originalImage.complete || !originalImage.naturalWidth) {
+    if (!originalImageElement.complete || !originalImageElement.naturalWidth) {
         alert('Please wait for the image to load completely.');
         return;
     }
@@ -312,8 +318,8 @@ async function upscaleImage() {
         const dpiScaleFactor = targetDPI / 72;
         const totalScaleFactor = scaleFactor * dpiScaleFactor;
         
-        let newWidth = Math.round(originalImage.naturalWidth * totalScaleFactor);
-        let newHeight = Math.round(originalImage.naturalHeight * totalScaleFactor);
+        let newWidth = Math.round(originalImageElement.naturalWidth * totalScaleFactor);
+        let newHeight = Math.round(originalImageElement.naturalHeight * totalScaleFactor);
 
         // Limit maximum dimensions
         const maxDimension = 8000;
@@ -334,7 +340,7 @@ async function upscaleImage() {
         showProcessing('Upscaling image...');
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = 'high';
-        ctx.drawImage(originalImage, 0, 0, newWidth, newHeight);
+        ctx.drawImage(originalImageElement, 0, 0, newWidth, newHeight);
 
         // Apply post-processing
         if (noiseReduction > 0) {
@@ -354,7 +360,7 @@ async function upscaleImage() {
 
         // Handle image quality
         showProcessing('Generating final image...');
-        const isPNG = originalImage.src.includes('data:image/png');
+        const isPNG = originalImageElement.src.includes('data:image/png');
         const outputFormat = isPNG ? 'image/png' : 'image/jpeg';
         const outputQuality = Math.max(0.1, Math.min(1.0, quality));
 
@@ -364,26 +370,24 @@ async function upscaleImage() {
         if (!dataUrl || dataUrl === 'data:,') {
             throw new Error('Failed to generate image data');
         }
-
-        const upscaledImage = document.getElementById('upscaledImage');
         
-        upscaledImage.onload = function() {
+        upscaledImageElement.onload = function() {
             updateImageInfo(newWidth, newHeight, outputFormat, 'upscaledInfo', outputQuality);
             upscaleButton.disabled = false;
             downloadButton.disabled = false;
             
-            upscaledImage.dataset.quality = outputQuality;
-            upscaledImage.dataset.format = outputFormat;
+            upscaledImageElement.dataset.quality = outputQuality;
+            upscaledImageElement.dataset.format = outputFormat;
             
             hideProcessing();
             hidePreviewLoading('upscaledImage');
         };
         
-        upscaledImage.onerror = function() {
+        upscaledImageElement.onerror = function() {
             throw new Error('Failed to load processed image');
         };
         
-        upscaledImage.src = dataUrl;
+        upscaledImageElement.src = dataUrl;
 
     } catch (error) {
         console.error('Error during image processing:', error);
@@ -396,20 +400,18 @@ async function upscaleImage() {
 }
 
 // Update the download function
-function downloadImage() {
-    const upscaledImage = document.getElementById('upscaledImage');
-    
+function downloadImage() {    
     // Get stored quality and format
-    const quality = parseFloat(upscaledImage.dataset.quality || 0.8);
-    const format = upscaledImage.dataset.format || 'image/jpeg';
+    const quality = parseFloat(upscaledImageElement.dataset.quality || 0.8);
+    const format = upscaledImageElement.dataset.format || 'image/jpeg';
     
     // Create a temporary canvas
     const canvas = document.createElement('canvas');
-    canvas.width = upscaledImage.naturalWidth;
-    canvas.height = upscaledImage.naturalHeight;
+    canvas.width = upscaledImageElement.naturalWidth;
+    canvas.height = upscaledImageElement.naturalHeight;
     
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(upscaledImage, 0, 0);
+    ctx.drawImage(upscaledImageElement, 0, 0);
     
     // Generate download file
     const dataUrl = canvas.toDataURL(format, quality);
